@@ -1,0 +1,3392 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f8f7f5;
+  color: #292524;
+}
+
+button {
+  font-family: inherit;
+}
+
+.app {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 32px 0 60px;
+}
+
+.topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 70px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #7c3aed;
+}
+
+.topo p {
+  margin: 6px 0 0;
+  color: #78716c;
+  font-size: 14px;
+}
+
+.perfil {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ede9fe;
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+.boas-vindas {
+  margin-bottom: 38px;
+}
+
+.etiqueta {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #8b5cf6;
+}
+
+.boas-vindas h1 {
+  margin: 12px 0;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.boas-vindas p {
+  max-width: 600px;
+  margin: 0;
+  color: #78716c;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.resumo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 45px;
+}
+
+.card-resumo {
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.card-resumo span {
+  font-size: 24px;
+}
+
+.card-resumo strong {
+  display: block;
+  margin-top: 12px;
+  font-size: 30px;
+}
+
+.card-resumo p {
+  margin: 5px 0 0;
+  color: #78716c;
+}
+
+.titulo-secao {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+.titulo-secao h2 {
+  margin: 8px 0 0;
+  font-size: 28px;
+}
+
+.data {
+  color: #78716c;
+  font-size: 14px;
+}
+
+.tarefa {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.icone-tarefa {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: #f5f3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.info-tarefa {
+  flex: 1;
+}
+
+.info-tarefa h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.info-tarefa p {
+  margin: 0;
+  color: #78716c;
+  font-size: 14px;
+}
+
+.botao {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: #7c3aed;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao:hover {
+  background: #6d28d9;
+}
+
+.botao.concluida {
+  background: #16a34a;
+}
+
+@media (max-width: 700px) {
+  .app {
+    padding-top: 22px;
+  }
+
+  .topo {
+    align-items: flex-start;
+    margin-bottom: 50px;
+  }
+
+  .perfil span {
+    display: none;
+  }
+
+  .resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .titulo-secao {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .tarefa {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .botao {
+    width: 100%;
+  }
+}
+
+.progresso-area {
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 18px;
+  padding: 20px;
+  margin-bottom: 45px;
+}
+
+.progresso-topo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.progresso-topo strong {
+  color: #7c3aed;
+}
+
+.barra {
+  width: 100%;
+  height: 9px;
+  background: #ede9fe;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.barra-preenchida {
+  height: 100%;
+  background: #7c3aed;
+  border-radius: 20px;
+  transition: width 0.3s ease;
+}
+
+.lista-tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dia-tarefa {
+  display: inline-block;
+  margin-bottom: 5px;
+  color: #8b5cf6;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.tarefa-concluida {
+  opacity: 0.65;
+}
+
+.tarefa-concluida h3 {
+  text-decoration: line-through;
+}
+
+@media (max-width: 700px) {
+  .progresso-area {
+    margin-bottom: 35px;
+  }
+}
+
+.botao-nova {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: #7c3aed;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-nova:hover {
+  background: #6d28d9;
+}
+
+.acoes-tarefa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.botao-secundario,
+.botao-excluir {
+  border: 1px solid #e7e5e4;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: white;
+  color: #57534e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-secundario:hover {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.botao-excluir {
+  color: #dc2626;
+}
+
+.botao-excluir:hover {
+  background: #fef2f2;
+}
+
+.sem-tarefas {
+  text-align: center;
+  background: white;
+  border: 1px dashed #d6d3d1;
+  border-radius: 18px;
+  padding: 45px 20px;
+}
+
+.sem-tarefas span {
+  font-size: 40px;
+}
+
+.sem-tarefas h3 {
+  margin: 12px 0 6px;
+}
+
+.sem-tarefas p {
+  margin: 0;
+  color: #78716c;
+}
+
+.modal-fundo {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 25, 23, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+}
+
+.modal {
+  width: min(500px, 100%);
+  background: white;
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.modal-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.modal h2 {
+  margin: 8px 0 0;
+  font-size: 26px;
+}
+
+.fechar-modal {
+  border: 0;
+  background: transparent;
+  font-size: 30px;
+  color: #78716c;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal label {
+  display: block;
+  margin: 16px 0 7px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.modal input,
+.modal select {
+  width: 100%;
+  border: 1px solid #d6d3d1;
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: white;
+  color: #292524;
+  font-size: 15px;
+  outline: none;
+}
+
+.modal input:focus,
+.modal select:focus {
+  border-color: #8b5cf6;
+}
+
+.modal-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.botao-cancelar {
+  border: 1px solid #d6d3d1;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: white;
+  color: #57534e;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-salvar {
+  border: 0;
+  border-radius: 10px;
+  padding: 11px 18px;
+  background: #7c3aed;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.botao-salvar:hover {
+  background: #6d28d9;
+}
+
+@media (max-width: 800px) {
+  .tarefa {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .acoes-tarefa {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 500px) {
+  .titulo-secao {
+    width: 100%;
+  }
+
+  .botao-nova {
+    width: 100%;
+  }
+
+  .acoes-tarefa button {
+    flex: 1;
+  }
+
+  .modal {
+    padding: 22px;
+  }
+
+  .modal-acoes {
+    flex-direction: column-reverse;
+  }
+
+  .modal-acoes button {
+    width: 100%;
+  }
+}
+
+.semana {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.dia-bloco {
+  background: #fdfcfb;
+  border: 1px solid #eeeae6;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.dia-cabecalho {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.dia-cabecalho h3 {
+  margin: 0;
+  font-size: 19px;
+}
+
+.dia-cabecalho span {
+  color: #78716c;
+  font-size: 13px;
+}
+
+.dia-vazio {
+  border: 1px dashed #d6d3d1;
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+  color: #a8a29e;
+  font-size: 14px;
+}
+
+.dia-bloco .lista-tarefas {
+  gap: 10px;
+}
+
+.dia-bloco .tarefa {
+  border-radius: 14px;
+  padding: 16px;
+}
+
+@media (max-width: 700px) {
+  .dia-bloco {
+    padding: 15px;
+  }
+
+  .dia-cabecalho {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.layout {
+  min-height: 100vh;
+  display: flex;
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 245px;
+  padding: 28px 18px;
+  background: white;
+  border-right: 1px solid #eeeae6;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 35px;
+}
+
+.logo-casa {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #ede9fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.sidebar-logo strong,
+.sidebar-logo span {
+  display: block;
+}
+
+.sidebar-logo strong {
+  font-size: 15px;
+}
+
+.sidebar-logo span {
+  margin-top: 3px;
+  color: #a8a29e;
+  font-size: 12px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu-titulo {
+  margin: 0 10px 8px;
+  color: #a8a29e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.menu-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-radius: 11px;
+  padding: 12px;
+  background: transparent;
+  color: #78716c;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.menu-item:hover {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.menu-item.ativo {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.menu-item span {
+  width: 24px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.sidebar-final {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid #f0eeeb;
+}
+
+.mini-perfil {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+}
+
+.mini-perfil strong,
+.mini-perfil span {
+  display: block;
+}
+
+.mini-perfil strong {
+  font-size: 13px;
+}
+
+.mini-perfil span {
+  margin-top: 3px;
+  color: #a8a29e;
+  font-size: 11px;
+}
+
+.conteudo {
+  width: calc(100% - 245px);
+  min-height: 100vh;
+  margin-left: 245px;
+}
+
+.conteudo > .topo {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 25px 0;
+}
+
+.menu-mobile,
+.topo-mobile-titulo {
+  display: none;
+}
+
+.pagina-placeholder {
+  width: min(1000px, 92%);
+  margin: 0 auto;
+  padding: 55px 0;
+}
+
+.pagina-placeholder h1 {
+  margin: 12px 0;
+  font-size: clamp(34px, 5vw, 52px);
+}
+
+.pagina-placeholder > p {
+  color: #78716c;
+  font-size: 17px;
+}
+
+.cards-ambientes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-top: 35px;
+}
+
+.cards-ambientes div {
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 16px;
+  padding: 25px;
+  font-weight: 600;
+}
+
+.config-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 500px;
+  margin-top: 30px;
+  padding: 25px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 18px;
+}
+
+.config-card span {
+  color: #78716c;
+  font-size: 14px;
+}
+
+.overlay-menu {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+
+  .sidebar.sidebar-aberta {
+    transform: translateX(0);
+  }
+
+  .conteudo {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .menu-mobile {
+    display: block;
+    border: 0;
+    background: transparent;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .topo-mobile-titulo {
+    display: block;
+    flex: 1;
+  }
+
+  .conteudo > .topo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .overlay-menu {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(28, 25, 23, 0.35);
+    z-index: 40;
+  }
+}
+
+@media (max-width: 700px) {
+  .cards-ambientes {
+    grid-template-columns: 1fr;
+  }
+
+  .pagina-placeholder {
+    padding-top: 35px;
+  }
+}
+
+.card-ambiente {
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 18px;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 105px;
+  box-shadow: 0 5px 20px rgba(28, 25, 23, 0.03);
+}
+
+.ambiente-icone {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #f5f3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+}
+
+.ambiente-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ambiente-info strong,
+.ambiente-info span {
+  display: block;
+}
+
+.ambiente-info strong {
+  font-size: 16px;
+}
+
+.ambiente-info span {
+  margin-top: 5px;
+  color: #a8a29e;
+  font-size: 12px;
+}
+
+.ambiente-acoes {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+@media (max-width: 700px) {
+  .card-ambiente {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .ambiente-info {
+    padding-top: 5px;
+  }
+
+  .ambiente-acoes {
+    width: 100%;
+    margin-left: 67px;
+  }
+}
+
+.ambiente-tarefa {
+  display: inline-block;
+  margin-top: 7px;
+  padding: 4px 8px;
+  border-radius: 7px;
+  background: #f5f3ff;
+  color: #7c3aed;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.rotina-page {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 45px 0 70px;
+}
+
+.rotina-cabecalho {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.rotina-cabecalho h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(36px, 5vw, 54px);
+}
+
+.rotina-cabecalho p {
+  margin: 0;
+  color: #78716c;
+}
+
+.rotina-resumo {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.rotina-stat {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 17px;
+}
+
+.rotina-stat > span {
+  width: 45px;
+  height: 45px;
+  border-radius: 13px;
+  background: #f5f3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+.rotina-stat strong,
+.rotina-stat small {
+  display: block;
+}
+
+.rotina-stat strong {
+  font-size: 23px;
+}
+
+.rotina-stat small {
+  margin-top: 3px;
+  color: #a8a29e;
+  font-size: 11px;
+}
+
+.rotina-lista {
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.rotina-lista-topo {
+  margin-bottom: 25px;
+}
+
+.rotina-lista-topo h2 {
+  margin: 8px 0 0;
+  font-size: 25px;
+}
+
+.rotina-dia {
+  margin-bottom: 30px;
+}
+
+.rotina-dia:last-child {
+  margin-bottom: 0;
+}
+
+.rotina-dia-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.rotina-dia-titulo h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.rotina-dia-titulo span {
+  color: #a8a29e;
+  font-size: 12px;
+}
+
+.rotina-tarefa {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  margin-bottom: 8px;
+  border: 1px solid #f0eeeb;
+  border-radius: 14px;
+  transition: 0.2s ease;
+}
+
+.rotina-tarefa:hover {
+  border-color: #ddd6fe;
+  box-shadow: 0 5px 18px rgba(124, 58, 237, 0.05);
+}
+
+.rotina-tarefa.concluida {
+  opacity: 0.65;
+}
+
+.rotina-tarefa-icone {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #faf9f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+.rotina-tarefa-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rotina-tarefa-info strong {
+  display: block;
+  font-size: 14px;
+}
+
+.rotina-tarefa-info span {
+  display: inline-block;
+  margin-top: 5px;
+  margin-right: 10px;
+  color: #a8a29e;
+  font-size: 11px;
+}
+
+.rotina-tarefa-acoes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rotina-vazia {
+  padding: 55px 20px;
+  text-align: center;
+}
+
+.rotina-vazia > span {
+  font-size: 40px;
+}
+
+.rotina-vazia h3 {
+  margin: 15px 0 7px;
+}
+
+.rotina-vazia p {
+  max-width: 400px;
+  margin: 0 auto 20px;
+  color: #78716c;
+}
+
+@media (max-width: 900px) {
+  .rotina-resumo {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .rotina-page {
+    padding-top: 25px;
+  }
+
+  .rotina-cabecalho {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .rotina-resumo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rotina-lista {
+    padding: 18px;
+  }
+
+  .rotina-tarefa {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .rotina-tarefa-info {
+    padding-top: 5px;
+  }
+
+  .rotina-tarefa-acoes {
+    width: 100%;
+    margin-left: 60px;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .rotina-resumo {
+    grid-template-columns: 1fr;
+  }
+}
+
+.filtros-ambiente {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #f0eeeb;
+}
+
+.filtro-ambiente {
+  border: 1px solid #e7e3df;
+  border-radius: 999px;
+  padding: 9px 14px;
+  background: #fff;
+  color: #78716c;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.filtro-ambiente:hover {
+  border-color: #c4b5fd;
+  color: #7c3aed;
+  background: #faf9ff;
+}
+
+.filtro-ambiente.ativo {
+  border-color: #7c3aed;
+  background: #7c3aed;
+  color: white;
+}
+
+@media (max-width: 700px) {
+  .filtros-ambiente {
+    gap: 6px;
+  }
+
+  .filtro-ambiente {
+    padding: 8px 11px;
+  }
+}
+
+.hoje-page {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 45px 0 70px;
+}
+
+.hoje-cabecalho {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.hoje-cabecalho h1 {
+  margin: 10px 0 5px;
+  font-size: clamp(38px, 5vw, 54px);
+}
+
+.hoje-cabecalho p {
+  margin: 0;
+  color: #78716c;
+}
+
+.hoje-resumo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.hoje-resumo > div {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 17px;
+}
+
+.hoje-resumo span {
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  background: #f5f3ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+.hoje-resumo strong,
+.hoje-resumo small {
+  display: block;
+}
+
+.hoje-resumo strong {
+  font-size: 24px;
+}
+
+.hoje-resumo small {
+  margin-top: 3px;
+  color: #a8a29e;
+  font-size: 11px;
+}
+
+.hoje-progresso {
+  padding: 20px;
+  margin-bottom: 25px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 17px;
+}
+
+.hoje-tarefas {
+  padding: 28px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 20px;
+}
+
+.hoje-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hoje-tarefa {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 17px;
+  border: 1px solid #f0eeeb;
+  border-radius: 14px;
+}
+
+.hoje-tarefa.concluida {
+  opacity: 0.6;
+}
+
+.hoje-tarefa-icone {
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #faf9f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+.hoje-tarefa-info {
+  flex: 1;
+}
+
+.hoje-tarefa-info strong {
+  display: block;
+  font-size: 14px;
+}
+
+.hoje-tarefa-info span {
+  display: inline-block;
+  margin-top: 5px;
+  margin-right: 10px;
+  color: #a8a29e;
+  font-size: 11px;
+}
+
+.hoje-tarefa-acoes {
+  display: flex;
+  gap: 7px;
+}
+
+.hoje-vazio {
+  padding: 55px 20px;
+  text-align: center;
+}
+
+.hoje-vazio > span {
+  font-size: 42px;
+}
+
+.hoje-vazio h3 {
+  margin: 15px 0 7px;
+}
+
+.hoje-vazio p {
+  max-width: 430px;
+  margin: 0 auto 20px;
+  color: #78716c;
+}
+
+@media (max-width: 700px) {
+  .hoje-page {
+    padding-top: 25px;
+  }
+
+  .hoje-cabecalho {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .hoje-resumo {
+    grid-template-columns: 1fr;
+  }
+
+  .hoje-tarefas {
+    padding: 18px;
+  }
+
+  .hoje-tarefa {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .hoje-tarefa-info {
+    padding-top: 5px;
+  }
+
+  .hoje-tarefa-acoes {
+    width: 100%;
+    margin-left: 61px;
+  }
+}
+
+.dashboard {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 42px 0 70px;
+}
+
+.dashboard-boas-vindas {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.dashboard-boas-vindas h1 {
+  margin: 10px 0 8px;
+  font-size: clamp(36px, 5vw, 54px);
+  line-height: 1.05;
+}
+
+.dashboard-boas-vindas p {
+  margin: 0;
+  color: #78716c;
+}
+
+.dashboard-data {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 18px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 15px;
+}
+
+.dashboard-data > span {
+  font-size: 22px;
+}
+
+.dashboard-data strong,
+.dashboard-data small {
+  display: block;
+}
+
+.dashboard-data strong {
+  font-size: 13px;
+}
+
+.dashboard-data small {
+  margin-top: 3px;
+  color: #a8a29e;
+  font-size: 11px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.dashboard-card {
+  min-height: 185px;
+  padding: 23px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 19px;
+}
+
+.dashboard-card.destaque {
+  background: #faf9ff;
+  border-color: #e9e3ff;
+}
+
+.dashboard-card-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.card-label {
+  display: block;
+  color: #a8a29e;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.numero-grande {
+  display: block;
+  margin-top: 7px;
+  font-size: 32px;
+}
+
+.card-emoji {
+  font-size: 24px;
+}
+
+.dashboard-card > p {
+  min-height: 34px;
+  margin: 15px 0;
+  color: #78716c;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.dashboard-barra {
+  margin-bottom: 7px;
+}
+
+.dashboard-card > small {
+  color: #a8a29e;
+  font-size: 10px;
+}
+
+.proxima-nome {
+  display: block;
+  max-width: 190px;
+  margin-top: 9px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.link-dashboard {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #7c3aed;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.link-dashboard:hover {
+  text-decoration: underline;
+}
+
+.dashboard-inferior {
+  display: grid;
+  grid-template-columns: 1fr 310px;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.dashboard-tarefas {
+  padding: 27px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 20px;
+}
+
+.dashboard-secao-topo {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.dashboard-secao-topo h2 {
+  margin: 8px 0 0;
+  font-size: 24px;
+}
+
+.dashboard-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dashboard-tarefa {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 13px;
+  border: 1px solid #f0eeeb;
+  border-radius: 13px;
+}
+
+.dashboard-tarefa.concluida {
+  opacity: 0.55;
+}
+
+.dashboard-tarefa-icone {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #faf9f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
+
+.dashboard-tarefa-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dashboard-tarefa-info strong,
+.dashboard-tarefa-info span {
+  display: block;
+}
+
+.dashboard-tarefa-info strong {
+  font-size: 13px;
+}
+
+.dashboard-tarefa-info span {
+  margin-top: 4px;
+  color: #a8a29e;
+  font-size: 10px;
+}
+
+.dashboard-vazio {
+  padding: 35px 15px;
+  text-align: center;
+  color: #78716c;
+}
+
+.dashboard-vazio span {
+  font-size: 30px;
+}
+
+.dashboard-dica {
+  padding: 27px;
+  background: #f5f3ff;
+  border: 1px solid #e9e3ff;
+  border-radius: 20px;
+}
+
+.dica-icone {
+  display: block;
+  margin-bottom: 22px;
+  font-size: 30px;
+}
+
+.dashboard-dica h3 {
+  margin: 12px 0 10px;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+.dashboard-dica p {
+  margin: 0;
+  color: #6b6478;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.dashboard-acao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  padding: 25px 28px;
+  background: white;
+  border: 1px solid #eeeae6;
+  border-radius: 20px;
+}
+
+.dashboard-acao h2 {
+  margin: 8px 0 5px;
+  font-size: 20px;
+}
+
+.dashboard-acao p {
+  margin: 0;
+  color: #78716c;
+  font-size: 13px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard-grid .dashboard-card:last-child {
+    grid-column: span 2;
+  }
+
+  .dashboard-inferior {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard {
+    padding-top: 25px;
+  }
+
+  .dashboard-boas-vindas {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dashboard-data {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-grid .dashboard-card:last-child {
+    grid-column: auto;
+  }
+
+  .dashboard-tarefas {
+    padding: 18px;
+  }
+
+  .dashboard-tarefa {
+    flex-wrap: wrap;
+  }
+
+  .dashboard-tarefa .botao {
+    margin-left: 55px;
+  }
+
+  .dashboard-acao {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+/* =========================================
+   CALENDÁRIO SEMANAL
+   ========================================= */
+
+.calendario-page {
+  padding: 32px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.calendario-cabecalho {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.calendario-cabecalho h1 {
+  margin: 8px 0;
+  font-size: 32px;
+  line-height: 1.2;
+}
+
+.calendario-cabecalho p {
+  margin: 0;
+  color: #777;
+  font-size: 15px;
+}
+
+.calendario-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(190px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.calendario-dia {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 18px;
+  padding: 18px;
+  min-height: 280px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.calendario-dia-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 14px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.calendario-dia-topo h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.calendario-dia-topo > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.calendario-data {
+  color: #999;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.calendario-dia-topo span {
+  min-width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #f5f0ff;
+  color: #7657a8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.calendario-tarefas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calendario-tarefa {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 14px;
+  background: #fafafa;
+  border: 1px solid #f0f0f0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.calendario-tarefa:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.calendario-tarefa.concluida {
+  opacity: 0.65;
+}
+
+.calendario-tarefa.concluida strong {
+  text-decoration: line-through;
+}
+
+.calendario-check {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.calendario-tarefa.concluida .calendario-check {
+  background: #eee;
+}
+
+.calendario-tarefa-icone {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #f6f2fa;
+  font-size: 18px;
+}
+
+.calendario-tarefa-info {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calendario-tarefa-info strong {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.calendario-tarefa-info span {
+  color: #777;
+  font-size: 11px;
+}
+
+.calendario-tarefa-info small {
+  color: #7657a8;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.calendario-vazio {
+  padding: 35px 10px;
+  text-align: center;
+  color: #aaa;
+  font-size: 12px;
+}
+
+.calendario-tarefa > .botao-secundario {
+  flex-shrink: 0;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* =========================================
+   CALENDÁRIO — RESPONSIVO
+   ========================================= */
+
+@media (max-width: 1200px) {
+  .calendario-grid {
+    grid-template-columns: repeat(3, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .calendario-page {
+    padding: 20px;
+  }
+
+  .calendario-cabecalho {
+    flex-direction: column;
+  }
+
+  .calendario-cabecalho h1 {
+    font-size: 26px;
+  }
+
+  .calendario-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .calendario-page {
+    padding: 16px;
+  }
+
+  .calendario-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .calendario-dia {
+    min-height: auto;
+  }
+}
+
+
+
+/* =========================================
+   CALENDÁRIO — DATAS
+   ========================================= */
+
+.calendario-dia.hoje {
+  border: 2px solid #7657a8;
+}
+
+.calendario-dia-topo > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calendario-data {
+  min-width: auto !important;
+  height: auto !important;
+  display: block !important;
+  background: transparent !important;
+  color: #7657a8 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  border-radius: 0 !important;
+}
+
+
+/* =========================================
+   CALENDÁRIO — NAVEGAÇÃO
+   ========================================= */
+
+.calendario-navegacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 14px 18px;
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.04);
+}
+
+.calendario-navegacao strong {
+  color: #444;
+  font-size: 14px;
+  text-align: center;
+}
+
+.calendario-nav-botao,
+.calendario-hoje {
+  border: 1px solid #e5e0eb;
+  border-radius: 10px;
+  padding: 9px 14px;
+  background: #ffffff;
+  color: #5f4b73;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calendario-nav-botao:hover,
+.calendario-hoje:hover {
+  background: #f7f3fa;
+  border-color: #7657a8;
+}
+
+.calendario-hoje.ativo {
+  background: #7657a8;
+  color: #ffffff;
+  border-color: #7657a8;
+}
+
+@media (max-width: 700px) {
+  .calendario-navegacao {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .calendario-navegacao strong {
+    width: 100%;
+    order: -1;
+  }
+}
+
+
+.calendario-adicionar {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid #e5e0eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #7657a8;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calendario-adicionar:hover {
+  background: #7657a8;
+  color: #ffffff;
+  border-color: #7657a8;
+  transform: scale(1.05);
+}
+
+
+.calendario-hoje-label {
+  display: inline-block;
+  width: fit-content;
+  padding: 3px 7px;
+  border-radius: 6px;
+  background: #7657a8;
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+
+/* Cards de tarefas do calendário */
+.calendario-tarefa {
+  position: relative;
+  padding: 14px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #eee8f5;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.035);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.calendario-tarefa:hover {
+  transform: translateY(-2px);
+  border-color: #d9ccec;
+  box-shadow: 0 7px 18px rgba(118, 87, 168, 0.10);
+}
+
+.calendario-tarefa-icone {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: #f6f1fb;
+  font-size: 19px;
+}
+
+.calendario-tarefa-info strong {
+  color: #333;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.calendario-tarefa-info span {
+  color: #888;
+  font-size: 11px;
+}
+
+.calendario-tarefa-info small {
+  color: #7657a8;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.calendario-tarefa.concluida {
+  opacity: 0.58;
+  background: #fafafa;
+}
+
+.calendario-tarefa.concluida strong {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.calendario-check {
+  width: 27px;
+  height: 27px;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  background: #fff;
+  color: #7657a8;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.calendario-tarefa.concluida .calendario-check {
+  background: #7657a8;
+  border-color: #7657a8;
+  color: #fff;
+}
+
+
+/* Navegação semanal do calendário */
+.calendario-navegacao {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 24px;
+  padding: 12px 14px;
+  background: #ffffff;
+  border: 1px solid #eee8f5;
+  border-radius: 16px;
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.035);
+}
+
+.calendario-navegacao > strong {
+  grid-column: 2;
+  grid-row: 1;
+  color: #4a4054;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.calendario-nav-botao,
+.calendario-hoje {
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 1px solid #e5ddec;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #5f4b73;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calendario-nav-botao:first-child {
+  grid-column: 1;
+  justify-self: start;
+}
+
+.calendario-nav-botao:last-child {
+  grid-column: 3;
+  justify-self: end;
+}
+
+.calendario-hoje {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: center;
+  margin-left: auto;
+  margin-right: 0;
+  background: #f7f3fb;
+}
+
+.calendario-nav-botao:hover,
+.calendario-hoje:hover {
+  background: #f7f3fa;
+  border-color: #7657a8;
+  transform: translateY(-1px);
+}
+
+.calendario-hoje.ativo {
+  background: #7657a8;
+  color: #ffffff;
+  border-color: #7657a8;
+}
+
+@media (max-width: 900px) {
+  .calendario-navegacao {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .calendario-navegacao > strong {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .calendario-nav-botao:first-child {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .calendario-hoje {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0;
+    justify-self: end;
+  }
+
+  .calendario-nav-botao:last-child {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .calendario-navegacao {
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .calendario-nav-botao,
+  .calendario-hoje {
+    width: 100%;
+    font-size: 11px;
+  }
+}
+
+
+/* Calendário responsivo */
+@media (max-width: 700px) {
+  .calendario-page {
+    padding: 18px 14px;
+  }
+
+  .calendario-cabecalho {
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .calendario-cabecalho h1 {
+    font-size: 24px;
+  }
+
+  .calendario-cabecalho p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .calendario-cabecalho .botao-nova {
+    width: 100%;
+  }
+
+  .calendario-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .calendario-dia {
+    min-height: auto;
+    padding: 16px;
+  }
+
+  .calendario-dia-topo {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+
+  .calendario-tarefas {
+    gap: 8px;
+  }
+
+  .calendario-tarefa {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 420px) {
+  .calendario-cabecalho h1 {
+    font-size: 22px;
+  }
+
+  .calendario-dia-topo h2 {
+    font-size: 15px;
+  }
+
+  .calendario-tarefa-info strong {
+    font-size: 12px;
+  }
+
+  .calendario-adicionar {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+
+@keyframes destaqueHoje {
+  0%, 100% {
+    box-shadow: 0 8px 24px rgba(118, 87, 168, 0.15);
+  }
+  50% {
+    box-shadow: 0 10px 30px rgba(118, 87, 168, 0.24);
+  }
+}
+
+.calendario-dia.hoje {
+  animation: destaqueHoje 2.5s ease-in-out infinite;
+}
+
+.rotina-sem-resultado {
+  margin-top: 20px;
+  padding: 40px 24px;
+  text-align: center;
+  background: #faf8fd;
+  border: 1px dashed #d9ccec;
+  border-radius: 18px;
+}
+
+.rotina-sem-resultado > span {
+  display: block;
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.rotina-sem-resultado h3 {
+  margin: 0 0 8px;
+  color: #333;
+  font-size: 18px;
+}
+
+.rotina-sem-resultado p {
+  margin: 0 auto 18px;
+  max-width: 420px;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+.rotina-dia-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.rotina-dia-titulo > div:first-child {
+  min-width: 0;
+}
+
+.rotina-dia-progresso {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  min-width: 90px;
+}
+
+.rotina-dia-progresso strong {
+  color: #7657a8;
+  font-size: 11px;
+}
+
+.rotina-dia-barra {
+  width: 90px;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eee9f4;
+}
+
+.rotina-dia-barra > div {
+  height: 100%;
+  border-radius: inherit;
+  background: #7657a8;
+  transition: width 0.3s ease;
+}
+
+@media (max-width: 600px) {
+  .rotina-dia-titulo {
+    align-items: flex-start;
+  }
+
+  .rotina-dia-progresso {
+    min-width: 75px;
+  }
+
+  .rotina-dia-barra {
+    width: 75px;
+  }
+}
+
+
+.rotina-tarefa-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.prioridade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.prioridade-alta {
+  background: #fff0f0;
+  color: #d9534f;
+}
+
+.prioridade-média {
+  background: #fff8e8;
+  color: #b47b00;
+}
+
+.prioridade-baixa {
+  background: #edf8f1;
+  color: #4d9164;
+}
+
+@media (max-width: 600px) {
+  .rotina-tarefa-titulo {
+    align-items: flex-start;
+  }
+
+  .rotina-tarefa-titulo strong {
+    min-width: 0;
+  }
+}
+
+
+.inicio-prioridades {
+  margin-top: 24px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #eee8f5;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.inicio-prioridades-topo h2 {
+  margin: 6px 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.inicio-prioridades-topo p {
+  margin: 0;
+  color: #888;
+  font-size: 13px;
+}
+
+.inicio-prioridades-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.inicio-prioridade {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid #eee;
+}
+
+.inicio-prioridade > span {
+  font-size: 22px;
+}
+
+.inicio-prioridade div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.inicio-prioridade strong {
+  color: #333;
+  font-size: 22px;
+}
+
+.inicio-prioridade small {
+  color: #888;
+  font-size: 11px;
+}
+
+.inicio-prioridade.alta {
+  background: #fff7f7;
+  border-color: #f3dcdc;
+}
+
+.inicio-prioridade.media {
+  background: #fffaf0;
+  border-color: #f1e3bd;
+}
+
+.inicio-prioridade.baixa {
+  background: #f5fbf7;
+  border-color: #dceee1;
+}
+
+@media (max-width: 700px) {
+  .inicio-prioridades-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+.inicio-proximas {
+  margin-top: 24px;
+  padding: 24px;
+  background: #ffffff;
+  border: 1px solid #eee8f5;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
+}
+
+.inicio-proximas-topo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.inicio-proximas-topo h2 {
+  margin: 6px 0;
+  color: #333;
+  font-size: 20px;
+}
+
+.inicio-proximas-topo p {
+  margin: 0;
+  color: #888;
+  font-size: 13px;
+}
+
+.inicio-ver-todas {
+  padding: 8px 12px;
+  border: 0;
+  background: transparent;
+  color: #7657a8;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.inicio-proximas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.inicio-proxima-tarefa {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #eee8f5;
+  border-radius: 15px;
+  background: #faf9fc;
+  transition: 0.2s ease;
+}
+
+.inicio-proxima-tarefa:hover {
+  border-color: #d9ccec;
+  transform: translateY(-1px);
+}
+
+.inicio-proxima-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: #f0eafa;
+  font-size: 20px;
+}
+
+.inicio-proxima-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+  min-width: 0;
+}
+
+.inicio-proxima-info strong {
+  color: #333;
+  font-size: 14px;
+}
+
+.inicio-proxima-info span {
+  color: #888;
+  font-size: 11px;
+}
+
+.inicio-proxima-info small {
+  color: #7657a8;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.inicio-proxima-concluir {
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 9px;
+  background: #7657a8;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.inicio-proxima-concluir:hover {
+  opacity: 0.9;
+}
+
+.inicio-proximas-vazio {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 15px;
+  background: #faf9fc;
+}
+
+.inicio-proximas-vazio > span {
+  font-size: 28px;
+}
+
+.inicio-proximas-vazio strong {
+  color: #333;
+  font-size: 14px;
+}
+
+.inicio-proximas-vazio p {
+  margin: 3px 0 0;
+  color: #888;
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .inicio-proximas-topo {
+    flex-direction: column;
+  }
+
+  .inicio-proxima-tarefa {
+    align-items: flex-start;
+  }
+
+  .inicio-proxima-concluir {
+    align-self: center;
+  }
+}
+
+
+.ambiente-progresso {
+  margin-top: 12px;
+}
+
+.ambiente-progresso-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.ambiente-progresso-topo small {
+  color: #999;
+  font-size: 10px;
+}
+
+.ambiente-progresso-topo small:last-child {
+  color: #7657a8;
+  font-weight: 700;
+}
+
+.ambiente-barra {
+  width: 100%;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #eee9f4;
+}
+
+.ambiente-barra > div {
+  height: 100%;
+  border-radius: inherit;
+  background: #7657a8;
+  transition: width 0.3s ease;
+}
+
+
+
+.rotina-vazia-filtro {
+  margin-top: 20px;
+  padding: 40px 24px;
+}
+
+.rotina-vazia-filtro span {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 38px;
+}
+
+.rotina-vazia-filtro h3 {
+  margin-bottom: 8px;
+}
+
+.rotina-vazia-filtro p {
+  margin-bottom: 18px;
+}
+
+/* =================================
+   TEMA ESCURO
+================================= */
+
+body.tema-escuro {
+  background: #18151c;
+  color: #eee8f5;
+}
+
+body.tema-escuro .layout {
+  background: #18151c;
+}
+
+body.tema-escuro .sidebar {
+  background: #211d27;
+  border-right-color: #342d3d;
+}
+
+body.tema-escuro .conteudo {
+  background: #18151c;
+}
+
+body.tema-escuro .topo,
+body.tema-escuro .card-resumo,
+body.tema-escuro .progresso-card,
+body.tema-escuro .dia-card,
+body.tema-escuro .hoje-tarefa,
+body.tema-escuro .hoje-progresso,
+body.tema-escuro .hoje-proxima,
+body.tema-escuro .rotina-tarefa,
+body.tema-escuro .config-card {
+  background: #242029;
+  border-color: #393140;
+  color: #eee8f5;
+}
+
+body.tema-escuro h1,
+body.tema-escuro h2,
+body.tema-escuro h3,
+body.tema-escuro h4,
+body.tema-escuro strong {
+  color: #f5effb;
+}
+
+body.tema-escuro p,
+body.tema-escuro span {
+  color: #b9afc2;
+}
+
+body.tema-escuro .menu-item {
+  color: #bdb3c6;
+}
+
+body.tema-escuro .menu-item:hover {
+  background: #302a38;
+  color: #ffffff;
+}
+
+body.tema-escuro .menu-item.ativo {
+  background: #7657a8;
+  color: #ffffff;
+}
+
+body.tema-escuro .logo-area h1 {
+  color: #f5effb;
+}
+
+body.tema-escuro .logo-area p {
+  color: #aaa0b3;
+}
+
+body.tema-escuro .hoje-tarefa-info strong,
+body.tema-escuro .rotina-tarefa-info strong {
+  color: #f5effb;
+}
+
+body.tema-escuro .hoje-tarefa-info span,
+body.tema-escuro .rotina-tarefa-info span {
+  color: #aaa0b3;
+}
+
+body.tema-escuro .hoje-tarefa-icone,
+body.tema-escuro .rotina-tarefa-icone,
+body.tema-escuro .config-card-icone {
+  background: #30283a;
+}
+
+body.tema-escuro .botao-secundario,
+body.tema-escuro .config-form input,
+body.tema-escuro .config-form select {
+  background: #2a2530;
+  border-color: #433a49;
+  color: #eee8f5;
+}
+
+body.tema-escuro .botao-secundario:hover {
+  background: #342d3d;
+}
+
+body.tema-escuro .config-tema,
+body.tema-escuro .tema-card {
+  background: #242029;
+  border-color: #393140;
+}
+
+body.tema-escuro .tema-modo {
+  background: #2a2530;
+  border-color: #433a49;
+  color: #d8cfdf;
+}
+
+body.tema-escuro .tema-modo.ativo {
+  background: #7657a8;
+  border-color: #7657a8;
+  color: #ffffff;
+}
+
+body.tema-escuro .tema-status {
+  color: #aaa0b3;
+}
+
+body.tema-escuro .rotina-vazia,
+body.tema-escuro .rotina-filtro-vazio,
+body.tema-escuro .hoje-vazio,
+body.tema-escuro .hoje-tudo-concluido {
+  background: #242029;
+  border-color: #393140;
+}
+
+
+/* =================================
+   TEMA ESCURO — PRETO + AZUL + LILÁS + ROSA
+================================= */
+
+body.tema-escuro {
+  background: #000000;
+  color: #5aa9ff;
+}
+
+body.tema-escuro .layout,
+body.tema-escuro .conteudo {
+  background: #000000;
+}
+
+/* Sidebar */
+body.tema-escuro .sidebar {
+  background: #050505;
+  border-right-color: #171717;
+}
+
+body.tema-escuro .menu-item {
+  color: #5aa9ff;
+}
+
+body.tema-escuro .menu-item:hover {
+  background: #111827;
+  color: #7dbaff;
+}
+
+body.tema-escuro .menu-item.ativo {
+  background: #8b6bbd;
+  color: #ffffff;
+}
+
+/* Topo */
+body.tema-escuro .topo {
+  background: #000000;
+  border-bottom-color: #171717;
+}
+
+body.tema-escuro .logo-area h1,
+body.tema-escuro .logo-area p {
+  color: #5aa9ff;
+}
+
+/* Títulos */
+body.tema-escuro h1,
+body.tema-escuro h2,
+body.tema-escuro h3,
+body.tema-escuro h4 {
+  color: #5aa9ff;
+}
+
+/* Textos */
+body.tema-escuro p,
+body.tema-escuro span,
+body.tema-escuro small {
+  color: #5aa9ff;
+}
+
+/* Cards */
+body.tema-escuro .card-resumo,
+body.tema-escuro .progresso-card,
+body.tema-escuro .dia-card,
+body.tema-escuro .hoje-tarefa,
+body.tema-escuro .hoje-progresso,
+body.tema-escuro .hoje-proxima,
+body.tema-escuro .rotina-tarefa,
+body.tema-escuro .config-card {
+  background: #0a0a0a;
+  border-color: #1c1c1c;
+  color: #5aa9ff;
+}
+
+/* Ícones dos cards */
+body.tema-escuro .hoje-tarefa-icone,
+body.tema-escuro .rotina-tarefa-icone,
+body.tema-escuro .config-card-icone {
+  background: #111827;
+}
+
+/* Botões principais — lilás */
+body.tema-escuro .botao,
+body.tema-escuro .botao-nova,
+body.tema-escuro .botao-principal {
+  background: #a88bd3;
+  border-color: #a88bd3;
+  color: #ffffff;
+}
+
+body.tema-escuro .botao:hover,
+body.tema-escuro .botao-nova:hover,
+body.tema-escuro .botao-principal:hover {
+  background: #b99ce2;
+  border-color: #b99ce2;
+}
+
+/* Botões secundários */
+body.tema-escuro .botao-secundario {
+  background: #17131d;
+  border-color: #8f72b8;
+  color: #c5a8ec;
+}
+
+body.tema-escuro .botao-secundario:hover {
+  background: #241c2e;
+  color: #d8c2f5;
+}
+
+/* Links — rosa */
+body.tema-escuro a {
+  color: #ff6fae;
+}
+
+body.tema-escuro a:hover {
+  color: #ff9bc5;
+}
+
+/* Etiquetas */
+body.tema-escuro .etiqueta {
+  color: #ff6fae;
+}
+
+/* Filtros */
+body.tema-escuro .filtro-status,
+body.tema-escuro .filtro-ambiente {
+  background: #0d0d0d;
+  border-color: #252525;
+  color: #5aa9ff;
+}
+
+body.tema-escuro .filtro-status:hover,
+body.tema-escuro .filtro-ambiente:hover {
+  border-color: #a88bd3;
+  color: #c5a8ec;
+}
+
+body.tema-escuro .filtro-status.ativo,
+body.tema-escuro .filtro-ambiente.ativo {
+  background: #a88bd3;
+  border-color: #a88bd3;
+  color: #ffffff;
+}
+
+/* Campos de formulário */
+body.tema-escuro input,
+body.tema-escuro textarea,
+body.tema-escuro select {
+  background: #080808;
+  border-color: #292929;
+  color: #5aa9ff;
+}
+
+body.tema-escuro input::placeholder,
+body.tema-escuro textarea::placeholder {
+  color: #47739f;
+}
+
+body.tema-escuro input:focus,
+body.tema-escuro textarea:focus,
+body.tema-escuro select:focus {
+  border-color: #a88bd3;
+  outline: none;
+}
+
+/* Configurações */
+body.tema-escuro .config-tema,
+body.tema-escuro .tema-card {
+  background: #0a0a0a;
+  border-color: #222222;
+}
+
+body.tema-escuro .tema-modo {
+  background: #111111;
+  border-color: #292929;
+  color: #5aa9ff;
+}
+
+body.tema-escuro .tema-modo.ativo {
+  background: #a88bd3;
+  border-color: #a88bd3;
+  color: #ffffff;
+}
+
+/* Barra de progresso */
+body.tema-escuro .barra,
+body.tema-escuro .barra-progresso {
+  background: #171717;
+}
+
+body.tema-escuro .barra-preenchida,
+body.tema-escuro .progresso {
+  background: #a88bd3;
+}
+
+/* Tarefas concluídas */
+body.tema-escuro .hoje-tarefa.concluida,
+body.tema-escuro .rotina-tarefa.concluida {
+  background: #070707;
+  opacity: 0.75;
+}
+
+body.tema-escuro .hoje-tarefa.concluida .hoje-tarefa-info strong,
+body.tema-escuro .rotina-tarefa.concluida .rotina-tarefa-info strong {
+  color: #4d83b5;
+}
+
+/* Estados vazios */
+body.tema-escuro .rotina-vazia,
+body.tema-escuro .rotina-filtro-vazio,
+body.tema-escuro .hoje-vazio,
+body.tema-escuro .hoje-tudo-concluido {
+  background: #080808;
+  border-color: #222222;
+}
+
+/* Destaques em rosa */
+body.tema-escuro .config-restaurar,
+body.tema-escuro .botao-excluir {
+  color: #ff6fae;
+}
+
+body.tema-escuro .config-restaurar:hover,
+body.tema-escuro .botao-excluir:hover {
+  color: #ff9bc5;
+}
+
+
+/* =================================
+   AJUSTE FINAL — PALETA DARK
+================================= */
+
+/* Verde para progresso e sucesso */
+body.tema-escuro .barra-preenchida,
+body.tema-escuro .progresso {
+  background: #39d98a;
+}
+
+body.tema-escuro .progresso-topo strong,
+body.tema-escuro .hoje-resumo strong {
+  color: #39d98a;
+}
+
+/* Fundo das barras */
+body.tema-escuro .barra,
+body.tema-escuro .barra-progresso {
+  background: #18221d;
+}
+
+/* Status concluído */
+body.tema-escuro .botao.concluida {
+  background: #173d2b;
+  border-color: #39d98a;
+  color: #6ff0ad;
+}
+
+body.tema-escuro .rotina-tarefa.concluida {
+  border-color: #214b36;
+}
+
+/* Botões principais — lilás */
+body.tema-escuro .botao,
+body.tema-escuro .botao-nova,
+body.tema-escuro .botao-principal {
+  background: #a98bd4;
+  border-color: #a98bd4;
+  color: #ffffff;
+}
+
+body.tema-escuro .botao:hover,
+body.tema-escuro .botao-nova:hover,
+body.tema-escuro .botao-principal:hover {
+  background: #b99be3;
+  border-color: #b99be3;
+}
+
+/* Azul para informações */
+body.tema-escuro .hoje-resumo span,
+body.tema-escuro .tarefa-info,
+body.tema-escuro .rotina-dia-titulo span {
+  color: #5aa9ff;
+}
+
+/* Rosa para links e destaques */
+body.tema-escuro a,
+body.tema-escuro .etiqueta,
+body.tema-escuro .config-restaurar {
+  color: #ff6fae;
+}
+
+body.tema-escuro a:hover,
+body.tema-escuro .config-restaurar:hover {
+  color: #ff9bc5;
+}
+
+/* Destaque da próxima tarefa */
+body.tema-escuro .hoje-proxima {
+  border-color: #513d69;
+}
+
+body.tema-escuro .hoje-proxima-icone {
+  color: #c5a8ec;
+}
+
+/* Cards com borda discreta */
+body.tema-escuro .card-resumo:hover,
+body.tema-escuro .hoje-tarefa:hover,
+body.tema-escuro .rotina-tarefa:hover,
+body.tema-escuro .dia-card:hover {
+  border-color: #6d5790;
+  box-shadow: 0 8px 24px rgba(169, 139, 212, 0.12);
+}
+
+/* Textos secundários */
+body.tema-escuro p,
+body.tema-escuro small {
+  color: #8fb9df;
+}
+
+/* Títulos principais */
+body.tema-escuro h1,
+body.tema-escuro h2,
+body.tema-escuro h3,
+body.tema-escuro h4 {
+  color: #70b7ff;
+}
+
+
+/* =================================
+   CARDS DARK — PRETO + AZUL
+================================= */
+
+body.tema-escuro .card-resumo,
+body.tema-escuro .progresso-card,
+body.tema-escuro .dia-card,
+body.tema-escuro .hoje-tarefa,
+body.tema-escuro .hoje-progresso,
+body.tema-escuro .hoje-proxima,
+body.tema-escuro .rotina-tarefa,
+body.tema-escuro .config-card,
+body.tema-escuro .config-tema,
+body.tema-escuro .tema-card {
+  background: #050505;
+  border: 1px solid #164a78;
+  color: #70b7ff;
+  box-shadow: 0 8px 24px rgba(0, 80, 150, 0.12);
+}
+
+/* Borda azul mais forte ao passar o mouse */
+body.tema-escuro .card-resumo:hover,
+body.tema-escuro .progresso-card:hover,
+body.tema-escuro .dia-card:hover,
+body.tema-escuro .hoje-tarefa:hover,
+body.tema-escuro .rotina-tarefa:hover,
+body.tema-escuro .config-card:hover {
+  border-color: #2585d1;
+  box-shadow: 0 10px 28px rgba(37, 133, 209, 0.18);
+}
+
+/* Ícones dos cards */
+body.tema-escuro .icone-resumo,
+body.tema-escuro .hoje-tarefa-icone,
+body.tema-escuro .rotina-tarefa-icone,
+body.tema-escuro .config-card-icone {
+  background: #071525;
+  border: 1px solid #164a78;
+}
+
+/* Títulos dos cards */
+body.tema-escuro .card-resumo strong,
+body.tema-escuro .hoje-tarefa-info strong,
+body.tema-escuro .rotina-tarefa-info strong,
+body.tema-escuro .dia-cabecalho h3 {
+  color: #70b7ff;
+}
+
+/* Texto secundário */
+body.tema-escuro .card-resumo span,
+body.tema-escuro .hoje-tarefa-info span,
+body.tema-escuro .rotina-tarefa-info span {
+  color: #8fb9df;
+}
+
+
+/* NÚMEROS DOS CARDS EM AZUL */
+body.tema-escuro .card-resumo strong,
+body.tema-escuro .progresso-card strong,
+body.tema-escuro .hoje-resumo strong {
+  color: #70b7ff;
+}
+
+/* Percentual de progresso continua verde */
+body.tema-escuro .progresso-topo > strong {
+  color: #39d98a;
+}
+
+
+/* =================================
+   INÍCIO — TEMA ESCURO
+   PRETO + AZUL + VERDE + ROSA + LILÁS
+================================= */
+
+body.tema-escuro .dashboard-page {
+  background: #000000;
+}
+
+/* Títulos */
+body.tema-escuro .dashboard-page h1,
+body.tema-escuro .dashboard-page h2,
+body.tema-escuro .dashboard-page h3 {
+  color: #70b7ff;
+}
+
+/* Textos */
+body.tema-escuro .dashboard-page p,
+body.tema-escuro .dashboard-page span {
+  color: #8fb9df;
+}
+
+/* Etiquetas e destaques */
+body.tema-escuro .dashboard-page .etiqueta {
+  color: #ff6fae;
+}
+
+/* Cards do início */
+body.tema-escuro .dashboard-page .card-resumo,
+body.tema-escuro .dashboard-page .dashboard-card,
+body.tema-escuro .dashboard-page .dashboard-tarefa {
+  background: #050505;
+  border-color: #164a78;
+  color: #70b7ff;
+  box-shadow: 0 8px 24px rgba(37, 133, 209, 0.12);
+}
+
+/* Números */
+body.tema-escuro .dashboard-page .card-resumo strong,
+body.tema-escuro .dashboard-page .dashboard-card strong {
+  color: #70b7ff;
+}
+
+/* Ícones */
+body.tema-escuro .dashboard-page .card-resumo-icone,
+body.tema-escuro .dashboard-page .dashboard-card-icone,
+body.tema-escuro .dashboard-page .dashboard-tarefa-icone {
+  background: #071525;
+  border: 1px solid #164a78;
+}
+
+/* Botões */
+body.tema-escuro .dashboard-page .botao,
+body.tema-escuro .dashboard-page .botao-nova,
+body.tema-escuro .dashboard-page .botao-principal {
+  background: #a98bd4;
+  border-color: #a98bd4;
+  color: #ffffff;
+}
+
+body.tema-escuro .dashboard-page .botao:hover,
+body.tema-escuro .dashboard-page .botao-nova:hover,
+body.tema-escuro .dashboard-page .botao-principal:hover {
+  background: #c0a4e8;
+}
+
+/* Tarefas concluídas */
+body.tema-escuro .dashboard-page .dashboard-tarefa.concluida {
+  border-color: #245c3d;
+}
+
+body.tema-escuro .dashboard-page .dashboard-tarefa.concluida strong {
+  color: #39d98a;
+}
+
+/* Status */
+body.tema-escuro .dashboard-page .dashboard-status-tarefa {
+  color: #39d98a;
+}
+
+/* Progresso */
+body.tema-escuro .dashboard-page .barra-progresso {
+  background: #18221d;
+}
+
+body.tema-escuro .dashboard-page .progresso {
+  background: #39d98a;
+}
+
+/* Percentual */
+body.tema-escuro .dashboard-page .progresso-topo strong {
+  color: #39d98a;
+}
+
+/* Próxima tarefa */
+body.tema-escuro .dashboard-page .hoje-proxima {
+  background: #050505;
+  border-color: #513d69;
+}
+
+body.tema-escuro .dashboard-page .hoje-proxima-icone {
+  color: #c5a8ec;
+}
+
+/* Links */
+body.tema-escuro .dashboard-page a {
+  color: #ff6fae;
+}
+
+body.tema-escuro .dashboard-page a:hover {
+  color: #ff9bc5;
+}
+
+/* Hover dos cards */
+body.tema-escuro .dashboard-page .dashboard-tarefa:hover,
+body.tema-escuro .dashboard-page .card-resumo:hover {
+  border-color: #2585d1;
+  box-shadow: 0 10px 28px rgba(37, 133, 209, 0.2);
+}
+
+
+/* Dia atual — azul no tema escuro */
+body.tema-escuro .dashboard-page .dia-atual,
+body.tema-escuro .dashboard-page .dia-atual h2,
+body.tema-escuro .dashboard-page .dia-atual h3,
+body.tema-escuro .dashboard-page .dia-atual span {
+  color: #70b7ff;
+}
+
+
+/* =================================
+   PÁGINA HOJE — TEXTOS AZUIS
+================================= */
+
+body.tema-escuro .hoje-page h1,
+body.tema-escuro .hoje-page h2,
+body.tema-escuro .hoje-page h3,
+body.tema-escuro .hoje-page h4,
+body.tema-escuro .hoje-page strong,
+body.tema-escuro .hoje-page p,
+body.tema-escuro .hoje-page span,
+body.tema-escuro .hoje-page .etiqueta {
+  color: #70b7ff;
+}
+
+/* Links da página */
+body.tema-escuro .hoje-page a {
+  color: #70b7ff;
+}
+
+body.tema-escuro .hoje-page a:hover {
+  color: #9acbff;
+}
+
+/* Ícones */
+body.tema-escuro .hoje-page .hoje-tarefa-icone,
+body.tema-escuro .hoje-page .hoje-proxima-icone {
+  color: #70b7ff;
+}
+
+/* Mensagem de conclusão */
+body.tema-escuro .hoje-page .hoje-tudo-concluido {
+  color: #70b7ff;
+}
+
+
+body.tema-escuro h1,
+body.tema-escuro h2,
+body.tema-escuro h3,
+body.tema-escuro h4,
+body.tema-escuro strong {
+  color: #2e4f95;
+}
+
