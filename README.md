@@ -184,4 +184,3 @@ Desenvolvedora Full Stack
 ---
 
 ⭐ Projeto desenvolvido para estudos, portfólio e evolução prática em desenvolvimento Full Stack.
-
