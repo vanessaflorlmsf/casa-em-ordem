@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import Login from './Login'
 import { supabase } from './supabase'
 
@@ -31,6 +31,37 @@ type RegistroHistorico = {
   total: number
   progresso: number
   tarefasConcluidas?: string[]
+}
+
+function obterSemanaDaData(data: Date): string {
+  const primeiroDia = new Date(data.getFullYear(), 0, 1)
+  const dias = Math.floor(
+    (data.getTime() - primeiroDia.getTime()) /
+      (1000 * 60 * 60 * 24),
+  )
+  const semana = Math.ceil((dias + primeiroDia.getDay() + 1) / 7)
+
+  return `${data.getFullYear()}-${semana}`
+}
+
+function obterSemanaAtual(): string {
+  return obterSemanaDaData(new Date())
+}
+
+function normalizarTarefasRecorrentes(tarefas: Tarefa[]): Tarefa[] {
+  const semanaAtual = obterSemanaAtual()
+
+  return tarefas.map((tarefa) => {
+    if (!tarefa.recorrente || tarefa.semanaCriada === semanaAtual) {
+      return tarefa
+    }
+
+    return {
+      ...tarefa,
+      concluida: false,
+      semanaCriada: semanaAtual,
+    }
+  })
 }
 
 // ======================================================
@@ -150,7 +181,9 @@ function App() {
 
     if (salvas) {
       try {
-        return JSON.parse(salvas)
+        return normalizarTarefasRecorrentes(
+          JSON.parse(salvas) as Tarefa[],
+        )
       } catch {
         return tarefasIniciais
       }
@@ -168,7 +201,7 @@ function App() {
   // CARREGAR TAREFAS DO SUPABASE
   // ==================================================
 
-  const carregarTarefasDoSupabase = async () => {
+  const carregarTarefasDoSupabase = useCallback(async () => {
     const {
       data: { user },
     } = await supabase.auth.getUser()
@@ -207,8 +240,8 @@ function App() {
       concluida: tarefa.concluida ?? false,
     }))
 
-    setTarefas(tarefasConvertidas)
-  }
+    setTarefas(normalizarTarefasRecorrentes(tarefasConvertidas))
+  }, [])
 
   const [ambientes, setAmbientes] = useState<Ambiente[]>(() => {
     const salvos = localStorage.getItem('casa-em-ordem-ambientes')
@@ -414,7 +447,7 @@ function App() {
     return () => {
       subscription.unsubscribe()
     }
-  }, [])
+  }, [carregarTarefasDoSupabase])
 
   // ====================================================
   // LOGIN
@@ -760,64 +793,6 @@ function App() {
       semanaCalendario.getTime()
     )
   }
-
-  // ====================================================
-  // IDENTIFICAR SEMANA
-  // ====================================================
-
-  const obterSemanaDaData = (data: Date) => {
-    const primeiroDia = new Date(
-      data.getFullYear(),
-      0,
-      1,
-    )
-
-    const dias = Math.floor(
-      (data.getTime() -
-        primeiroDia.getTime()) /
-        (1000 * 60 * 60 * 24),
-    )
-
-    const semana = Math.ceil(
-      (dias +
-        primeiroDia.getDay() +
-        1) /
-        7,
-    )
-
-    return `${data.getFullYear()}-${semana}`
-  }
-
-  const obterSemanaAtual = () => {
-    return obterSemanaDaData(new Date())
-  }
-
-  // ====================================================
-  // RESETAR TAREFAS RECORRENTES
-  // ====================================================
-
-  useEffect(() => {
-    const semanaAtual =
-      obterSemanaAtual()
-
-    setTarefas((atuais) =>
-      atuais.map((tarefa) => {
-        if (
-          tarefa.recorrente &&
-          tarefa.semanaCriada &&
-          tarefa.semanaCriada !== semanaAtual
-        ) {
-          return {
-            ...tarefa,
-            concluida: false,
-            semanaCriada: semanaAtual,
-          }
-        }
-
-        return tarefa
-      }),
-    )
-  }, [])
 
   // ====================================================
   // SALVAR TAREFA
